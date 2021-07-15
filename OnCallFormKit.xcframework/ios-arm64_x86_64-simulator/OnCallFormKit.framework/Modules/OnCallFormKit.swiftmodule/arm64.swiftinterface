@@ -8,6 +8,7 @@ import Swift
 import SwiftUI
 import UIKit
 public struct CompletionScreen : SwiftUI.View {
+  public init()
   public var body: some SwiftUI.View {
     get
   }
