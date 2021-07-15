@@ -1,0 +1,31 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios14.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
+import Foundation
+import Lottie
+@_exported import OnCallFormKit
+import Swift
+import SwiftUI
+import UIKit
+public struct CompletionScreen : SwiftUI.View {
+  public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit16CompletionScreenV4bodyQrvp", 0) 🦸
+}
+public struct SingleChoiceComponent : SwiftUI.View {
+  public init(questionNumber: Swift.Int, question: Swift.String, options: [Swift.String], isRequired: Swift.Bool)
+  public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit21SingleChoiceComponentV4bodyQrvp", 0) 🦸
+}
+public struct FormViewer : SwiftUI.View {
+  public init(formId: Swift.Int, authToken: Swift.String, primaryColour: SwiftUI.Color)
+  public var body: some SwiftUI.View {
+    get
+  }
+  public static func getFormViewController(formId: Swift.Int, authToken: Swift.String, primaryColour: UIKit.UIColor) -> SwiftUI.UIHostingController<OnCallFormKit.FormViewer>
+  public static func getFormViewController(formId: Swift.Int, authToken: Swift.String, primaryColour: SwiftUI.Color) -> SwiftUI.UIHostingController<OnCallFormKit.FormViewer>
+  public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit0C6ViewerV4bodyQrvp", 0) 🦸
+}

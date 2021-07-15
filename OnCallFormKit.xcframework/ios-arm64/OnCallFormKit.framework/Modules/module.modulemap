@@ -1,0 +1,11 @@
+framework module OnCallFormKit {
+  umbrella header "OnCallFormKit.h"
+
+  export *
+  module * { export * }
+}
+
+module OnCallFormKit.Swift {
+    header "OnCallFormKit-Swift.h"
+    requires objc
+}
