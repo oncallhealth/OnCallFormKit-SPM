@@ -4,19 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "OnCallFormKit-SPM",
+    name: "OnCallFormKit",
     platforms: [.iOS(.v14)],
     products: [
         .library(
             name: "OnCallFormKit",
-            targets: ["OnCallFormKit-Framework"]),
+            targets: ["OnCallFormKit"]),
     ],
     dependencies: [
         .package(name: "Lottie", url: "https://github.com/airbnb/lottie-ios", .exact("3.2.3"))
     ],
     targets: [
         .binaryTarget(
-            name: "OnCallFormKit-Framework",
+            name: "OnCallFormKit",
             path: "OnCallFormKit.xcframework"
         ),
     ]
