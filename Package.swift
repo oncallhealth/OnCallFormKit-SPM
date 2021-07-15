@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "OnCallFormKit",
+    name: "OnCallFormKit-SPM",
     platforms: [.iOS(.v14)],
     products: [
         .library(
