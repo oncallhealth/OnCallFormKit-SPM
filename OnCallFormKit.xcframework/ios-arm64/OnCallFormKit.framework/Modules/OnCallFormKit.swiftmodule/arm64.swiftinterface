@@ -18,6 +18,8 @@ final public class FormViewerViewController : SwiftUI.UIHostingController<OnCall
 @available(iOS 13, *)
 public struct FormViewer : SwiftUI.View {
   public struct CompletionResult {
+    public let numberOfFormsSubmitted: Swift.Int
+    public let numberOfFormsSkipped: Swift.Int
   }
   public init(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor, onComplete: ((OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)? = nil)
   public var body: some SwiftUI.View {
