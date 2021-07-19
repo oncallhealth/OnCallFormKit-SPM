@@ -7,10 +7,17 @@ import Swift
 import SwiftUI
 import UIKit
 import WebKit
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
+  public init(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor, onComplete: @escaping () -> Swift.Void)
+  override public init(rootView: OnCallFormKit.FormViewer)
+  override public init?(coder aDecoder: Foundation.NSCoder, rootView: OnCallFormKit.FormViewer)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc deinit
+}
 @available(iOS 13, *)
 public struct FormViewer : SwiftUI.View {
-  public init(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor)
-  public static func getFormViewController(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor) -> SwiftUI.UIHostingController<OnCallFormKit.FormViewer>
+  public init(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor, onComplete: (() -> Swift.Void)? = nil)
   public var body: some SwiftUI.View {
     get
   }
