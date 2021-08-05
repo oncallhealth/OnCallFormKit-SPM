@@ -1,29 +1,44 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
+import Combine
 import Foundation
 @_exported import OnCallFormKit
 import Swift
 import SwiftUI
 import UIKit
 import WebKit
-@_hasMissingDesignatedInitializers @available(iOS 13, *)
-final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
-  public init(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor, onComplete: @escaping (OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)
-  override public init(rootView: OnCallFormKit.FormViewer)
-  override public init?(coder aDecoder: Foundation.NSCoder, rootView: OnCallFormKit.FormViewer)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @objc deinit
-}
-@available(iOS 13, *)
 public struct FormViewer : SwiftUI.View {
-  public struct CompletionResult {
-    public let numberOfFormsSubmitted: Swift.Int
-    public let numberOfFormsSkipped: Swift.Int
+  public enum CompletionResult {
+    case completedAllForms
+    case skippedSomeForms
+    public static func == (a: OnCallFormKit.FormViewer.CompletionResult, b: OnCallFormKit.FormViewer.CompletionResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
-  public init(formIds: [Swift.Int], authToken: Swift.String, primaryColour: UIKit.UIColor, onComplete: ((OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)? = nil)
+  public enum Mode : Swift.Equatable {
+    case allForms
+    case specific(formId: Swift.Int)
+    public static func == (a: OnCallFormKit.FormViewer.Mode, b: OnCallFormKit.FormViewer.Mode) -> Swift.Bool
+  }
+  public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, primaryColour: UIKit.UIColor, onComplete: ((OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)? = nil)
   public var body: some SwiftUI.View {
     get
   }
   public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit0C6ViewerV4bodyQrvp", 0) 🦸
 }
+public protocol FormViewerViewControllerDelegate : AnyObject {
+  func didFinish(completionResult: OnCallFormKit.FormViewer.CompletionResult)
+}
+@_hasMissingDesignatedInitializers final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
+  public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, primaryColour: UIKit.UIColor)
+  weak final public var delegate: OnCallFormKit.FormViewerViewControllerDelegate?
+  override public init(rootView: OnCallFormKit.FormViewer)
+  override public init?(coder aDecoder: Foundation.NSCoder, rootView: OnCallFormKit.FormViewer)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc deinit
+}
+extension OnCallFormKit.FormViewer.CompletionResult : Swift.Equatable {}
+extension OnCallFormKit.FormViewer.CompletionResult : Swift.Hashable {}
