@@ -3,11 +3,14 @@
 // swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
 import Combine
 import Foundation
+import MobileCoreServices
 @_exported import OnCallFormKit
+import SafariServices
 import Swift
 import SwiftUI
 import UIKit
 import WebKit
+@available(iOS 13, *)
 public struct FormViewer : SwiftUI.View {
   public enum CompletionResult {
     case completedAllForms
@@ -29,10 +32,12 @@ public struct FormViewer : SwiftUI.View {
   }
   public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit0C6ViewerV4bodyQrvp", 0) 🦸
 }
+@available(iOS 13, *)
 public protocol FormViewerViewControllerDelegate : AnyObject {
   func didFinish(completionResult: OnCallFormKit.FormViewer.CompletionResult)
 }
-@_hasMissingDesignatedInitializers final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
   public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, primaryColour: UIKit.UIColor)
   weak final public var delegate: OnCallFormKit.FormViewerViewControllerDelegate?
   override public init(rootView: OnCallFormKit.FormViewer)
@@ -40,5 +45,7 @@ public protocol FormViewerViewControllerDelegate : AnyObject {
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc deinit
 }
+@available(iOS 13, *)
 extension OnCallFormKit.FormViewer.CompletionResult : Swift.Equatable {}
+@available(iOS 13, *)
 extension OnCallFormKit.FormViewer.CompletionResult : Swift.Hashable {}
