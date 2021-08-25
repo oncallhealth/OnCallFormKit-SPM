@@ -21,6 +21,8 @@ public struct FormViewer : SwiftUI.View {
     case completedAllForms
     case skippedSomeForms
     case assignedForm
+    case exit
+    case noForms
     public static func == (a: OnCallFormKit.FormViewer.CompletionResult, b: OnCallFormKit.FormViewer.CompletionResult) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
