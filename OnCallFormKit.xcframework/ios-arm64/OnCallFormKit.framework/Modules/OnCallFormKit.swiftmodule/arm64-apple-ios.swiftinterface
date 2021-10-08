@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
 // swift-module-flags: -target arm64-apple-ios12.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
 import Combine
 import Foundation
@@ -10,13 +10,14 @@ import Swift
 import SwiftUI
 import UIKit
 import WebKit
+import _Concurrency
 public class OnCallParticipantModel : Swift.Equatable {
   public init(fullName: Swift.String, url: Swift.String)
   public static func == (lhs: OnCallFormKit.OnCallParticipantModel, rhs: OnCallFormKit.OnCallParticipantModel) -> Swift.Bool
   @objc deinit
 }
 @available(iOS 13, *)
-public struct FormViewer : SwiftUI.View {
+@_Concurrency.MainActor(unsafe) public struct FormViewer : SwiftUI.View {
   public enum CompletionResult {
     case completedAllForms
     case skippedSomeForms
@@ -35,23 +36,20 @@ public struct FormViewer : SwiftUI.View {
     case assign(formId: Swift.Int, participants: [OnCallFormKit.OnCallParticipantModel])
     public static func == (a: OnCallFormKit.FormViewer.Mode, b: OnCallFormKit.FormViewer.Mode) -> Swift.Bool
   }
-  public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, domain: Swift.String, primaryColour: UIKit.UIColor, onComplete: ((OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)? = nil)
-  public var body: some SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, domain: Swift.String, primaryColour: UIKit.UIColor, onComplete: ((OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
     get
   }
-  public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit0C6ViewerV4bodyQrvp", 0) 🦸
+  public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit0C6ViewerV4bodyQrvp", 0) __
 }
 @available(iOS 13, *)
 public protocol FormViewerViewControllerDelegate : AnyObject {
   func didFinish(completionResult: OnCallFormKit.FormViewer.CompletionResult)
 }
 @_hasMissingDesignatedInitializers @available(iOS 13, *)
-final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
-  public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, domain: Swift.String, primaryColour: UIKit.UIColor)
-  weak final public var delegate: OnCallFormKit.FormViewerViewControllerDelegate?
-  override public init(rootView: OnCallFormKit.FormViewer)
-  override public init?(coder aDecoder: Foundation.NSCoder, rootView: OnCallFormKit.FormViewer)
-  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+@_Concurrency.MainActor(unsafe) final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
+  @_Concurrency.MainActor(unsafe) public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, domain: Swift.String, primaryColour: UIKit.UIColor)
+  @_Concurrency.MainActor(unsafe) weak final public var delegate: OnCallFormKit.FormViewerViewControllerDelegate?
   @objc deinit
 }
 @available(iOS 13, *)
