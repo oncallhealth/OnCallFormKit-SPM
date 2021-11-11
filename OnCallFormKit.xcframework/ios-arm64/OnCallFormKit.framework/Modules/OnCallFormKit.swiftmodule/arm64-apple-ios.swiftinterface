@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
-// swift-module-flags: -target arm64-apple-ios12.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OnCallFormKit
 import Combine
 import Foundation
 import MobileCoreServices
@@ -16,7 +16,6 @@ public class OnCallParticipantModel : Swift.Equatable {
   public static func == (lhs: OnCallFormKit.OnCallParticipantModel, rhs: OnCallFormKit.OnCallParticipantModel) -> Swift.Bool
   @objc deinit
 }
-@available(iOS 13, *)
 @_Concurrency.MainActor(unsafe) public struct FormViewer : SwiftUI.View {
   public enum CompletionResult {
     case completedAllForms
@@ -42,17 +41,13 @@ public class OnCallParticipantModel : Swift.Equatable {
   }
   public typealias Body = @_opaqueReturnTypeOf("$s13OnCallFormKit0C6ViewerV4bodyQrvp", 0) __
 }
-@available(iOS 13, *)
 public protocol FormViewerViewControllerDelegate : AnyObject {
   func didFinish(completionResult: OnCallFormKit.FormViewer.CompletionResult)
 }
-@_hasMissingDesignatedInitializers @available(iOS 13, *)
-@_Concurrency.MainActor(unsafe) final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class FormViewerViewController : SwiftUI.UIHostingController<OnCallFormKit.FormViewer> {
   @_Concurrency.MainActor(unsafe) public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, domain: Swift.String, primaryColour: UIKit.UIColor)
   @_Concurrency.MainActor(unsafe) weak final public var delegate: OnCallFormKit.FormViewerViewControllerDelegate?
   @objc deinit
 }
-@available(iOS 13, *)
 extension OnCallFormKit.FormViewer.CompletionResult : Swift.Equatable {}
-@available(iOS 13, *)
 extension OnCallFormKit.FormViewer.CompletionResult : Swift.Hashable {}
