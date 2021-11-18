@@ -33,6 +33,7 @@ public class OnCallParticipantModel : Swift.Equatable {
     case allForms
     case specific(formId: Swift.Int)
     case assign(formId: Swift.Int, participants: [OnCallFormKit.OnCallParticipantModel])
+    case preview(formId: Swift.Int)
     public static func == (a: OnCallFormKit.FormViewer.Mode, b: OnCallFormKit.FormViewer.Mode) -> Swift.Bool
   }
   @_Concurrency.MainActor(unsafe) public init(mode: OnCallFormKit.FormViewer.Mode, authToken: Swift.String, domain: Swift.String, primaryColour: UIKit.UIColor, onComplete: ((OnCallFormKit.FormViewer.CompletionResult) -> Swift.Void)? = nil)
